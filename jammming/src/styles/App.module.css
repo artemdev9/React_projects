@@ -4,3 +4,10 @@
     background-color: purple;
     padding: 0.4rem;
 }
+
+.App_tracks{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
