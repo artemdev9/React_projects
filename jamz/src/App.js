@@ -1,55 +1,34 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import styles from "./styles/App.module.css";
+
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Playlist from "./components/Playlist";
+import Spotify from "./utilities/Spotify";
 
 function App() {
-  const [searchData, setSearchData] = useState([
-    {
-      id: 1,
-      name: "track name 1 ",
-      artist: "artist name 1",
-      album: "album name 1",
-    },
-    {
-      id: 2,
-      name: "track name 2 ",
-      artist: "artist name 2",
-      album: "album name 2",
-    },
-    {
-      id: 3,
-      name: "track name 3 ",
-      artist: "artist name 3",
-      album: "album name 3",
-    },
-  ]);
+  Spotify.getAccessToken();
 
+  const [searchData, setSearchData] = useState([]);
   const [playlistName, setPlaylistName] = useState("My Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  const [playlistTracks, setPlaylistTracks] = useState([
-    // {
-    //   id: 1,
-    //   name: "track name playlist 1 ",
-    //   artist: "artist name playlist 1",
-    //   album: "album name playlist 1",
-    // },
-    // {
-    //   id: 2,
-    //   name: "track name playlist 1 ",
-    //   artist: "artist name playlist 1",
-    //   album: "album name playlist 1",
-    // },
-    // {
-    //   id: 3,
-    //   name: "track name playlist 1 ",
-    //   artist: "artist name playlist 1",
-    //   album: "album name playlist 1",
-    // },
-  ]);
+  const search = (term) => {
+    Spotify.search(term).then(setSearchData);
+  };
+
+  const savePlaylist = () => {
+    if (playlistTracks.length) {
+      const trackURIs = playlistTracks.map((track) => track.uri);
+      Spotify.savePlaylist(playlistName, trackURIs).then(() => {
+        setPlaylistName("New Playlist");
+        setPlaylistTracks([]);
+        console.log("Playlist saved");
+      });
+    }
+  };
 
   const addTrack = (track) => {
     let trackAlreadyAdded = false;
@@ -80,7 +59,7 @@ function App() {
     <div className="App">
       <header className={styles.logo}>Jamz</header>
       <div className="App_search">
-        <SearchBar></SearchBar>
+        <SearchBar onSearch={search}></SearchBar>
         <div className={styles.App_tracks}>
           <SearchResults searchData={searchData} addTrack={addTrack} />
           <Playlist
@@ -88,6 +67,7 @@ function App() {
             playlist={playlistTracks}
             removeTrack={removeTrack}
             playlistNameChange={playlistNameChange}
+            playlistSave={savePlaylist}
           />
         </div>
       </div>

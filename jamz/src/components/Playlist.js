@@ -1,15 +1,18 @@
 import TrackList from "./TrackList";
 
-function Playlist(props) {
+import style from "../styles/Playlist.module.css";
 
+function Playlist(props) {
   const playlistNameChange = (event) => {
     props.playlistNameChange(event.target.value);
-  }
+  };
 
   return (
-    <div>
-      <input onChange={playlistNameChange} defaultValue={props.playlistName} />
-      <button>Add Playlist</button>
+    <div className={style.Playlist_container}>
+      <div className={style.Playlist_controls}>
+        <input onChange={playlistNameChange} value={props.playlistName} />
+        <button onClick={props.playlistSave}>Add Playlist</button>
+      </div>
       <TrackList
         tracks={props.playlist}
         removeTrack={props.removeTrack}

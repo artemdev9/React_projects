@@ -1,0 +1,29 @@
+.searchBar_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 100px;
+}
+
+input {
+    border-radius: 10px 0px 0px 10px;
+    padding: 4px 5px;
+    border: black solid 2px;
+}
+
+button{
+    border-radius: 0px 10px 10px 0px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: 0px;
+}
+
+svg{
+    margin-top: 5px;
+}
+
+
+
+
+
