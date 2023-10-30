@@ -1,8 +1,8 @@
 .logo {
-    font-size: 3.5rem;
+    font-size: 6rem;
     font-weight: 800;
-    background-color: purple;
-    padding: 0.4rem;
+    color: white;
+    margin-bottom: 1.5%;
 }
 
 .App {
@@ -54,3 +54,23 @@
     }
 }
 
+.logo_container{
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 50%;
+}
+
+.blackground_halfcircle_top {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 80%;
+    border-radius: 0 0 50% 50%;
+    background-color: rgba(0, 0, 0, 1);
+  }

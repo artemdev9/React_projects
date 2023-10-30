@@ -7,6 +7,7 @@ import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Playlist from "./components/Playlist";
 import Spotify from "./utilities/Spotify";
+import Logo from "./components/Logo";
 
 function App() {
   Spotify.getAccessToken();
@@ -57,7 +58,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className={styles.logo}>Jamz</header>
+      <div className={styles.blackground_halfcircle_top}></div>
+      <div className={styles.logo_container}>
+        <header className={styles.logo}>Jamz</header>
+        <Logo />
+      </div>
       <div className="App_search">
         <SearchBar onSearch={search}></SearchBar>
         <div className={styles.App_tracks}>
