@@ -10,8 +10,8 @@ function Playlist(props) {
   return (
     <div className={style.Playlist_container}>
       <div className={style.Playlist_controls}>
-        <input onChange={playlistNameChange} value={props.playlistName} />
-        <button onClick={props.playlistSave}>Add Playlist</button>
+        <input className={style.Playlist_name_input} onChange={playlistNameChange} value={props.playlistName} />
+        <button className={style.Playlist_name_button} onClick={props.playlistSave}>Add</button>
       </div>
       <TrackList
         tracks={props.playlist}

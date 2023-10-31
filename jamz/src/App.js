@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import styles from "./styles/App.module.css";
+import style from "./styles/App.module.css";
 
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
@@ -58,14 +58,14 @@ function App() {
 
   return (
     <div className="App">
-      <div className={styles.blackground_halfcircle_top}></div>
-      <div className={styles.logo_container}>
-        <header className={styles.logo}>Jamz</header>
+      <div className={style.blackground_halfcircle_top}></div>
+      <div className={style.logo_container}>
+        <header className={style.logo}>Jamz</header>
         <Logo />
       </div>
       <div className="App_search">
         <SearchBar onSearch={search}></SearchBar>
-        <div className={styles.App_tracks}>
+        <div className={style.App_tracks}>
           <SearchResults searchData={searchData} addTrack={addTrack} />
           <Playlist
             playlistName={playlistName}
@@ -76,6 +76,7 @@ function App() {
           />
         </div>
       </div>
+      <div className={style.blackground_halfcircle_bottom}></div>
     </div>
   );
 }
