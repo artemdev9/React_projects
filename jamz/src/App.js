@@ -57,6 +57,7 @@ function App() {
   };
 
   return (
+    
     <div className="App">
       <div className={style.blackground_halfcircle_top}></div>
       <div className={style.logo_container}>
@@ -67,6 +68,7 @@ function App() {
         <SearchBar onSearch={search}></SearchBar>
         <div className={style.App_tracks}>
           <SearchResults searchData={searchData} addTrack={addTrack} />
+          <div className={style.blackground_halfcircle_middle}></div>
           <Playlist
             playlistName={playlistName}
             playlist={playlistTracks}
